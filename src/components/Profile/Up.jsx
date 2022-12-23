@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin, loginUser, postAdmin, postTeams, postUser } from "../../redux/actions";
 import { useEffect } from "react";
 import Nav from "../Nav";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { abled } from "./Disabled";
 import { TEAMS } from "../Data";
 
@@ -39,7 +39,7 @@ export default function Logup(){
     });
 
     // Redux: 
-    const hist = useHistory()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     let theuser= useSelector(state=> state.user)
     // console.log(theuser)
@@ -77,9 +77,10 @@ export default function Logup(){
 
     useEffect(()=>{
         if(thereisuser || thereisadmin){
-            hist.push({
-                pathname: '/begin',
-            }); 
+            // hist.push({
+            //     pathname: '/begin',
+            // }); 
+            navigate('/begin')
             setThereisuser(false)
         }
     },[thereisuser, thereisadmin]);

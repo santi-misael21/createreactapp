@@ -8,7 +8,7 @@ import Pages from "./Pages";
 import '../estilos/categ.css';
 import { useState } from "react";
 import { DefinePages, Detection } from "./Item/Item";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Nav2 from "./Nav/Nav2";
 
 
@@ -25,7 +25,7 @@ export default function Categories(){
  
     // Redux:
     const disp = useDispatch();
-    const hist = useHistory();
+    // const hist = useHistory();
 
     // let categories = useSelector(state=>state.categories)
     // let subcategories = useSelector(state=>state.subcategories)
@@ -57,11 +57,14 @@ export default function Categories(){
     },[visit]); 
     
 //    console.log(user,admin)
-    useEffect(()=>{
+    // useEffect(()=>{
+    function effect(){
         if(Object.keys(visit).length && !Object.keys(user).length && !Object.keys(admin).length){
-            hist.push('/begin')
+            return ( <Navigate to="/begin"/>)
+            // hist.push('/begin')
         }
-    },[]);
+    }
+    // },[]);
 
     // console.log('visit.team', visit.team)
 
@@ -198,6 +201,7 @@ export default function Categories(){
                 <Pages completed={completed} />
             }
 
+            {effect()}
         </div>
     )
 };

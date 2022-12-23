@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Nav2 from "../Nav/Nav2";
 
 export default function Profile (){
@@ -8,13 +8,13 @@ export default function Profile (){
     let user= useSelector(state => state.user);
     let admin = useSelector(state=> state.admin); 
     
-    let hist = useHistory()
+    let navigate = useNavigate()
     
     // console.log('commp begin ','user: ', user, 'admin: ', admin, user)
     let Team= user.teamId === 1 ? 'Microinformática' : user.teamId === 2 ? 'Telecomunicaciones' : ''
     
     if((user && !user.id) && (admin && !admin.id)){
-        hist.push('/begin')
+        navigate('/begin')
     }
 
 

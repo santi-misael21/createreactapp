@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/actions";
 
 export default function Nav2({confirm, helpDis, vissDis, profDis, initDis}){
@@ -11,17 +11,20 @@ export default function Nav2({confirm, helpDis, vissDis, profDis, initDis}){
     //Redux: 
 
     const disp = useDispatch()
-    const hist = useHistory()
+    // const hist = useHistory()
+    const navigate = useNavigate()
     
     let user = useSelector(state=> state.user); 
     let admin = useSelector(state=> state.admin); 
 
     function help(){
-        hist.push('/help')
+        // hist.push('/help')
+        navigate('/help')
     }
 
     function list(){
-        hist.push('/begin')
+        // hist.push('/begin')
+        navigate('/begin')
     }
 
     // function init(){
@@ -29,13 +32,15 @@ export default function Nav2({confirm, helpDis, vissDis, profDis, initDis}){
     // }
 
     function prof(){
-        hist.push('/profile')
+        // hist.push('/profile')
+        navigate('/profile')
     }
 
     function close(){
         localStorage.clear()
         disp(logOut())
-        hist.push('/')
+        // hist.push('/')
+        navigate('/')
     }
 
     function display(){

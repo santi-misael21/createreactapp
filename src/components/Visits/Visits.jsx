@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../../estilos/visits.css';
 import { getVisitByID } from "../../redux/actions";
 
@@ -12,7 +12,7 @@ export default function Visits({Closed, /*Closing_date,*/ Id, Opening_date, Team
     let [called, setCalled] = useState(false)
 
     // HOOKS:
-    let history = useHistory()
+    let navigate = useNavigate()
 
     // REDUX:
     let dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function Visits({Closed, /*Closing_date,*/ Id, Opening_date, Team
 
     useEffect(()=>{
         if(visit.id === Id && called){
-            history.push('/check')
+            navigate('/check')
         }
     }, [visit])
 

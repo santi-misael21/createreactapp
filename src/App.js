@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Logup from './components/Profile/Up';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logup/>
+    {/* <Router>
+      <Route exact path='/' render={()=> <Logup/>}/>
+      <Route exact path='/check' render={()=> <Categories/>}  /> */}
+      {/* <Route exact path='/list' render={()=> <List/>}  /> */}
+      {/* <Route exact path='/begin' render={()=> <Begin/>}  />
+      <Route exact path='/help' render={()=> <Help/>}  />
+      <Route exact path='/profile' render={()=> <Profile/>}  /> */}
+      {/* <Route exact path='/check' render={()=> <Item category={'Casa Principal'} subcategory='Rack Principal (orden)'/>}  /> */}
+    {/* </Router> */}
     </div>
   );
 }

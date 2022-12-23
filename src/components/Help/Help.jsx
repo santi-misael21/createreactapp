@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Nav2 from "../Nav/Nav2";
 
 export default function Help(){
@@ -8,13 +8,18 @@ export default function Help(){
     let user= useSelector(state => state.user);
     let admin = useSelector(state=> state.admin); 
     
-    let hist = useHistory()
+    // let hist = useHistory()
 
-    if((user && !user.id) && (admin && !admin.id)){
-        hist.push('/begin')
+    function navig(){
+        if((user && !user.id) && (admin && !admin.id)){
+            return (<Navigate to='/begin'/>)
+            // hist.push('/begin')
+        }
     }
+
     return (
         <div>
+            {navig()}
             <Nav2 helpDis initDis/>
             <div className="help" >
 

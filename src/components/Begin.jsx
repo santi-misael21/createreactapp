@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector} from 'react-redux';
 import { getVisitID, loginAdmin, loginUser } from "../redux/actions";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ export default function Begin(){
     let [conf, setConf] = useState(undefined)
 
     //Hooks:
-    const hist= useHistory()
+    // const hist= useHistory()
 
     //Redux:
     let disp= useDispatch();
@@ -36,13 +36,18 @@ export default function Begin(){
         // console.log(designed)
     }
 
-    useEffect(()=>{
+    // useEffect(()=>{
+    function desig(){
         if(!designed){
             if(!localStorage.length) {
-                hist.push('/')
+                return (
+                    <Navigate to='/' />
+                )
+                // hist.push('/')
             }
         }
-    });//,[]
+    }
+    // });//,[]
 
     if(!designed && localStorage.length){
 
@@ -72,18 +77,22 @@ export default function Begin(){
     // console.log('commp begin ','user: ', user, 'admin: ', admin)
     let Team= user.teamId === 1 ? 'Microinformática' : user.teamId === 2 ? 'Telecomunicaciones' : ''
 
-    useEffect(()=>{
+    // useEffect(()=>{
+    function confir(){
         if(conf){
             // console.log('conf confirmado', conf)
             let Opening_date= new Date();
 
             disp(getVisitID({Team, Opening_date, Closed: false, userId: user.id}))
-
-            hist.push({
-                pathname: '/check',
-            }); 
+            return (
+                <Navigate to='/check' />
+                // hist.push({
+                //     pathname: '/check',
+                // }); 
+            )
         }
-    },[conf])
+    }
+    // },[conf])
 
     // console.log(s)
 
@@ -95,6 +104,8 @@ export default function Begin(){
         <div className="begin">
             <Nav2 confirm={confirm} vissDis/>
             <List user={user} admin={admin}/>
+            {desig()}
+            {confir()}
         </div>
     )
 
