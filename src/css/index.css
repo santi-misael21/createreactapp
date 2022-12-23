@@ -264,7 +264,7 @@ h4 {
   margin-top: 3px;
 }
 .cards {
-  display: inline;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;

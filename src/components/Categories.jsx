@@ -5,7 +5,7 @@ import { CATEGORIES, CreateCatsRequired, SUBCATEGORIES, } from "./Data";
 import Item from "./Item";
 import Nav from "./Nav";
 import Pages from "./Pages";
-import '../estilos/categ.css';
+// import '../estilos/categ.css';
 import { useState } from "react";
 import { DefinePages, Detection } from "./Item/Item";
 import { Navigate } from "react-router-dom";

@@ -1,3 +1,7 @@
+import '../App.css';
+import '../index.css';
+import '../css/index.css';
+
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 // import Login from "../compons/Log Options/01-Login";
