@@ -1,0 +1,211 @@
+.nav{
+    min-height: fit-content;
+    max-height: min-content;
+    width: 100%;
+    font-size: 10px;
+    // background-color: rgb(128, 83, 0);
+    background-color: @lightpeanut;
+    color: whitesmoke;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    // padding: 10px;
+        .divham{
+            #ham{
+                visibility:hidden;
+            }
+        }
+    #nav1{
+        width: 25%;
+        background-color: @darkbordeau;
+        border: 1px solid @darkpeanut;
+        height: max-content;
+        padding: 6px 0;
+    }
+    #nav2{
+        width: 25%;
+        background-color: @darkbordeau;
+        border: 1px solid @darkpeanut;
+        height: max-content;
+        padding: 6px 0;
+    }
+    #nav3, #nav4, #nav5{
+        width: 25%;
+        background-color: @darkbordeau;
+        border: 1px solid @darkpeanut;
+        height: max-content;
+        padding: 6px 0;
+    }
+    #divdis{
+        background-color: rgb(68, 68, 68);
+        width: 25%;
+        padding: 6px 0;
+        height: max-content;
+        border: 1px solid rgb(191, 191, 191);
+        color: rgb(191, 191, 191);
+        cursor:not-allowed;
+    }
+    // #nav4, #nav5{
+        
+    // }
+    #nav1:hover, #nav2:hover, #nav3:hover, #nav4:hover, #nav5:hover{
+        background-color: @lightbordeau;
+        cursor: pointer;
+    }
+}
+    @media screen and (max-width: 414px) {
+        // #nav1:hover, #nav2:hover, #nav3:hover{
+        //     background-color: @lightbordeau;
+        //     cursor: pointer;
+        // }.enter{
+    // .nav{
+    //     #nav1, #nav2, #nav3{
+    //         visibility: hidden;
+    //     }
+    // }
+    #responsive{
+        // }
+        display: flex;
+        // position: absolute;
+        background-color: rgba(160, 117, 43, 0.8);
+        #nav1, #nav2, #nav3, #nav4, #nav5{
+            visibility: hidden;
+        }
+        #divdis{
+            visibility: hidden;
+            // background-color: rgb(68, 68, 68);
+            // width: 100%;
+            // padding: 6px 0;
+            // height: max-content;
+            // border: 1px solid rgb(191, 191, 191);
+            // color: rgb(191, 191, 191);
+            // cursor:not-allowed;
+        }
+        .divham{
+            padding: 0.5px 0;
+            #ham{
+                // border: 1px solid blue;
+                border-radius: 2px;
+                height: 2px;
+                width: 24px;
+                background-color: black;
+                margin: 5.2px 3px;
+                visibility:visible;
+            }
+        }
+        .divham:hover{
+            background-color: beige;
+            cursor: pointer;
+        }
+    }
+    #displ{
+        animation-name: hideOut;
+        animation-duration: 0.5s;
+        display: block;
+        // position: absolute;
+        background-color: rgba(160, 117, 43, 0.8);
+        #nav1, #nav2, #nav3, #nav4, #nav5{
+            cursor: pointer;
+            background-color: rgba(99, 16, 9, 0.8);
+            width: 97%;
+            text-align: left;
+            padding-left: 2%;
+        }
+        #divdis{
+            background-color: rgb(68, 68, 68);
+            width: 97%;
+            padding: 6px 0;
+            height: max-content;
+            border: 1px solid rgb(191, 191, 191);
+            color: rgb(191, 191, 191);
+            cursor:not-allowed;
+            text-align: left;
+            padding-left: 2%;
+        }
+        #nav1:hover, #nav2:hover, #nav3:hover, #nav4:hover, #nav5:hover{
+            background-color: @lightbordeau;
+            cursor: pointer;
+        }
+        .divham{
+            padding: 0.5px 0;
+            max-width: 30px;
+            #ham{
+                // border: 1px solid blue;
+                border-radius: 2px;
+                height: 2px;
+                width: 24px;
+                background-color: black;
+                margin: 5.2px 3px;
+                visibility:visible;
+            }
+        }
+        .divham:hover{
+            background-color: beige;
+            cursor: pointer;
+        }
+    }
+}
+
+.nav1{
+    min-height: fit-content;
+    max-height: max-content;
+    padding: 2px 5px ;
+    font-size: 10px;
+    // background-color: rgb(128, 83, 0);
+    background-color: @lightpeanut;
+    color: whitesmoke;
+    text-align: left;
+}
+
+b{
+    font-size: 11px;
+}
+.teamcolor{
+    color: purple;
+    // background-color: rgb(17, 3, 3);
+    // background-color: black;
+    font-weight: 700;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+}
+.datecolor{
+    color: yellowgreen;
+    // background-color: rgb(19, 13, 0);
+    // background-color: black;
+    font-weight: 700;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+}
+.idcolor{
+    color: orange;
+    // background-color: rgb(19, 27, 5);
+    // background-color: black;
+    font-weight: 700;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+}
+.closedcolor{
+    color: @darkbordeau;
+    // background-color: rgb(18, 0, 18);
+    // background-color: black;
+    font-weight: 700;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes hideOut {
+    from {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
