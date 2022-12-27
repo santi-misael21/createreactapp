@@ -8,7 +8,7 @@ import Camera from "./Cam/Camera";
 // import { CATEGORIES } from "./Data";
 // import { Detection } from "./Item/Item";
 
-export default function Item({category, subcategory, includePhoto, go, userid, notation, visit}){
+export default function Item({category, subcategory, includePhoto, go, /*userid, visit,*/ notation}){
 
 	// console.log(category, subcategory, includePhoto, go, userid, notation)
 	// let [saved, setSaved] = useState({val: undefined, go, category, subcategory})
@@ -77,7 +77,7 @@ export default function Item({category, subcategory, includePhoto, go, userid, n
 			catName: category,
 			subName: subcategory,
 			saved: notation.saved, // ¿Es Redux instantáneo e inmediato?
-			visitId: catsVisit.id, 
+			visitId: catsVisit.id,
 			Image,
 		}));
 		// return setSaved({val: true,  go, category, subcategory})
@@ -111,35 +111,35 @@ export default function Item({category, subcategory, includePhoto, go, userid, n
 				Subcategoría: {subcategory && subcategory}
 			</h6>
 			<br></br>
-			<div className="check1" 
+			<div className="check1"
 				id= {notation && notation.notation === true ? 'selected': ''}
 					onClick={()=>yes()}>
 					Sí
-					<input type='checkbox' 
+					<input type='checkbox'
 						checked={notation && notation.notation === true ? true : false}
 						readOnly
 						disabled={(catsVisit.closed) || admin.id || (notation && notation.saved) || false}
 					/>
 			</div>
 			<br></br>
-			<div 
-					className="check2" 
+			<div
+					className="check2"
 					id={notation && notation.notation===false ? 'selected': ''}
 					onClick={()=>no()}>
 					No
-					<input type='checkbox' 
+					<input type='checkbox'
 						checked={notation && notation.notation===false ? true : false}
 						readOnly
 						disabled={(catsVisit.closed) || admin.id || (notation && notation.saved) || false}
 					/>
 			</div>
 			<br></br>
-			<input 
+			<input
 					id="in"
-					className="comment" 
-					onChange={(e)=> handText(e)} 
+					className="comment"
+					onChange={(e)=> handText(e)}
 					disabled={(catsVisit.closed) || admin.id || (notation && notation.saved) || false}
-					placeholder='Observaciones' 
+					placeholder='Observaciones'
 					value={notation && typeof notation.observations === 'string' && notation.observations || ''}
 			/>
 			<br></br>
@@ -147,23 +147,25 @@ export default function Item({category, subcategory, includePhoto, go, userid, n
 			{includePhoto &&
 				<Camera notation={notation && notation} saved={notation && notation.saved} go={go} catName={category} subcategory={subcategory}/>}
 
-			{!admin.id && 
-			<button 
-				className="buttons" 
-				onClick={edit} 
-				disabled = {(catsVisit.closed)||(notation && !notation.saved) || false}
-				>
-				Editar 
-			</button>}
+			{!admin.id &&
+			<div className="">
+				<button
+					className="buttons"
+					onClick={edit}
+					disabled = {(catsVisit.closed)||(notation && !notation.saved) || false}
+					>
+					Editar
+				</button>
+				<button
+					className="buttons"
+					onClick={save}
+					disabled = {(catsVisit.closed)||(notation && notation.saved) || (notation && notation.notation) === undefined || false}
+					>
+					Guardar
+				</button>
+			</div>}
 
-			{!admin.id && 
-			<button 
-				className="buttons" 
-				onClick={save} 
-				disabled = {(catsVisit.closed)||(notation && notation.saved) || (notation && notation.notation) === undefined || false}
-				>
-				Guardar 
-			</button>}
+			{/* {!admin.id && 0} */}
 
 		</div>
 	)

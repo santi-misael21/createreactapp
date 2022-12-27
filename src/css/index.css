@@ -110,6 +110,9 @@ button:disabled {
 .disabled {
   color: gray;
 }
+.text-center {
+  text-align: center;
+}
 .deleteimage {
   color: #b92125;
   background-color: #a0752b;
@@ -146,6 +149,7 @@ button:disabled {
   color: aliceblue;
   padding: 20px;
   margin: 10px 5px ;
+  display: block;
 }
 .item .check1,
 .itemdis .check1,
@@ -171,14 +175,25 @@ button:disabled {
   padding: 4px 7.5px;
   background-color: #080404;
   color: blanchedalmond;
+  margin-left: 5px;
 }
 .item #cattag,
 .itemdis #cattag {
   color: orange;
+  text-align: center;
 }
 .item #subtag,
 .itemdis #subtag {
   color: #a0752b;
+  text-align: center;
+}
+.item .buttons,
+.itemdis .buttons {
+  margin: 10px 20px;
+  width: max-content;
+  min-width: 60px;
+  height: 50px;
+  border-radius: 5px;
 }
 @media screen and (max-width: 414px) {
   .item,
@@ -250,12 +265,6 @@ button:disabled {
 }
 #selected {
   border: 2px solid green;
-}
-.buttons {
-  margin: 10px 5px;
-  width: max-content;
-  height: 50px;
-  border-radius: 5px;
 }
 h6,
 h5,

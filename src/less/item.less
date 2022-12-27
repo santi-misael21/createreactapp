@@ -4,6 +4,8 @@
     color:aliceblue;
     padding: 20px;
     margin: 10px 5px ;
+    display: block;
+
 
     .check1, .check2{
         width: 183px;
@@ -26,13 +28,25 @@
         padding: 4px 7.5px;
         background-color: rgb(8, 4, 4);
         color: blanchedalmond;
+        margin-left: 5px;
     }    
 
     #cattag{
-        color: orange
+        color: orange;
+        text-align: center;
     }
     #subtag{
-        color: @lightpeanut
+        color: @lightpeanut;
+        text-align: center;
+    } 
+
+    .buttons{
+        margin: 10px 20px;
+        // margin: auto;
+        width: max-content;
+        min-width: 60px;
+        height: 50px;
+        border-radius: 5px;
     }
 
     @media screen and (max-width: 414px){
@@ -113,12 +127,12 @@
     border: 2px solid green;
 }
 
-.buttons{
-    margin: 10px 5px;
-    width: max-content;
-    height: 50px;
-    border-radius: 5px;
-}
+// .buttons{
+//     margin: 10px 5px;
+//     width: max-content;
+//     height: 50px;
+//     border-radius: 5px;
+// }
 
 h6, h5, h4{
     margin-bottom: 1px;
