@@ -16,24 +16,24 @@ import Help from '../components/Help/Help.jsx';
 import Profile from '../components/Profile/Profile.jsx';
 
 export const router= createBrowserRouter([
-    {
-      path: '/',
-      element: <App/>
-    },
-    {
-      path: '/check',
-      element: <Categories/>
-    },
-    {
-      path: '/begin',
-      element: <Begin/>
-    },
-    {
-      path: '/help',
-      element: <Help/>
-    },
-    {
-      path: '/profile',
-      element: <Profile/>
-    }
-  ])
+  {
+    path: '/',
+    element: <App/>
+  },
+  {
+    path: '/check',
+    element: <Categories/>
+  },
+  {
+    path: '/begin',
+    element: <Begin/>
+  },
+  {
+    path: '/help',
+    element: <Help/>
+  },
+  {
+    path: '/profile',
+    element: <Profile/>
+  },
+]);
