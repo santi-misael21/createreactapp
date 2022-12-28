@@ -91,17 +91,23 @@
 }
 
 .camera{
-    .section{
+    text-align: center;
+    .section, .sectionsaved{
         border: 2px dashed gray;
         width: 60%;
         margin: auto;
-        // @media screen and (max-width: 414px){
-        //     width: 60%;
-        // }
-
+    }   
+    .text-center, .section, .sectionsaved{
+        text-align: center;
     }
-    
+    .section{
+        cursor: pointer;
+    }
+    .sectionsaved{
+        cursor: not-allowed;
+    }
 }
+
 .check1, .check2{
     width: 183px;
     display: flex;

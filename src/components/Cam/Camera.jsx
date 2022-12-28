@@ -163,45 +163,64 @@ function Camera ({saved, go, catName, subcategory}) { // saved = 'boolean' // go
     return (
         <div className="camera">
             <Container>
-            <h5 className='text-center'><b className={len? 'disabled' : 'title'}>Este ítem requiere una foto</b></h5>
-                {!admin.id && !visit.categories[go][subcategory].photo && <Dropzone className= 'dropzone' 
-                onDrop={handleDrop}
-                onChange={(e)=>changeDrop(e)} value={visit.categories[go][subcategory].photo}>
-                    {({getRootProps, getInputProps}) => (
-                        <section className='section' >
-                            <div {...getRootProps({className:'dropzone'})}> <input {...getInputProps()} /> <span className="icon">📷</span>
-                            <h6><i className={len? 'disabled': "legend"}>Pulsá para subir o sacar una foto</i></h6>
-                            </div>
-                        </section>
-                    )}
-                </Dropzone>}
-                {/* {imagePreview()} */}
-                <div>
-                    { loading === 'true' ? 'Subiendo imagen' : 
-                !visit.categories[go][subcategory].photo ? "": <div><i className="noteofsaving"><h6>{len+plu}</h6><h6>{sav}</h6></i> 
-                    {/* {visit.categories[go][subcategory].photo.map((item,i)=>  */}
-                        <div className="linkimage" 
-                        // key={i}
-                        > 
-                            {/* <img alt='Imagen' style={{width: '125px', height:'70px', backgroundSize: 'cover', paddingRight :'15px'}} src={item} /> */}
-                            <a className="a"
-                            // href={item} 
-                            href={visit.categories[go][subcategory].photo}
-                            target='_blank' 
-                            rel="noopener noreferrer">
-                                <i>
-                                    <h5 style={{fontSize:'11.5px', }}>Ver en tamaño completo 
-                                        <img src={newtab3} width='12px' height='12px' alt=''/>
-                                    </h5>
+            <h5 className='text-center'><b className={len? 'disabled' : 'title'}>
+                Este ítem requiere una foto</b>
+            </h5>
+            {!admin.id && !visit.categories[go][subcategory].photo && 
+            <Dropzone className= 'dropzone' 
+            onDrop={handleDrop}
+            onChange={(e)=>changeDrop(e)} value={visit.categories[go][subcategory].photo}>
+                {({getRootProps, getInputProps}) => (
+                    <section className={saved?'sectionsaved':'section'} >
+                        {!saved && loading !== 'true' &&
+                        <div {...getRootProps({className:'dropzone'})}> 
+                            <input {...getInputProps()} /> 
+                            <span className="icon">📷</span>
+                            <h6>
+                                <i className={len? 'disabled': "legend"}>
+                                    Pulsá para subir o sacar una foto
                                 </i>
-                            </a>{ !admin.id &&
-                            <i ><button onClick={del} className='deleteimage' disabled={saved}><h5 style={{fontSize:'10px', paddingBottom:'4px'}}>❌ Borrar</h5></button></i>}
-                            {/* Llenar Redux */}
+                            </h6>
+                        </div>}
+                        {saved && 
+                        <div className='dropzone'>
+                            <span className="icon">📷</span>
+                            <h6>
+                                <i className={len? 'disabled': "legend"}>
+                                    {loading === 'true'? '...':<>Pulsá el botón <i>Editar</i> para subir una imagen</>}                                    
+                                </i>
+                            </h6>
+                        </div>}
+                    </section>
+                )}
+            </Dropzone>}
 
-                        </div>
-                    {/* )} */}
-                    </div>}
-                </div>
+            <div>
+                { loading === 'true' ? <h6>{'Subiendo imagen...'} <br />Puede demorar según la definición de la misma</h6> : 
+                !visit.categories[go][subcategory].photo ? "": 
+                <div>
+                    <i className="noteofsaving"><h6>{len+plu}</h6><h6>{sav}</h6></i> 
+                    <div className="linkimage"> 
+                        <a className="a"
+                        href={visit.categories[go][subcategory].photo}
+                        target='_blank' 
+                        rel="noopener noreferrer">
+                            <i>
+                                <h5 style={{fontSize:'11.5px', }}>Ver en tamaño completo 
+                                    <img src={newtab3} width='12px' height='12px' alt=''/>
+                                </h5>
+                            </i>
+                        </a>{ !admin.id &&
+                        <i >
+                            <button onClick={del} className='deleteimage' disabled={saved}>
+                                <h5 style={{fontSize:'10px', paddingBottom:'4px'}}>
+                                    ❌ Borrar
+                                </h5>
+                            </button>
+                        </i>}
+                    </div>
+                </div>}
+            </div>
             </Container>
             {watchError()}
         </div>
@@ -209,3 +228,4 @@ function Camera ({saved, go, catName, subcategory}) { // saved = 'boolean' // go
 }
 
 export default Camera;
+

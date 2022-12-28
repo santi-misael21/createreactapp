@@ -110,9 +110,6 @@ button:disabled {
 .disabled {
   color: gray;
 }
-.text-center {
-  text-align: center;
-}
 .deleteimage {
   color: #b92125;
   background-color: #a0752b;
@@ -239,10 +236,25 @@ button:disabled {
   background-color: gray;
   color: blanchedalmond;
 }
-.camera .section {
+.camera {
+  text-align: center;
+}
+.camera .section,
+.camera .sectionsaved {
   border: 2px dashed gray;
   width: 60%;
   margin: auto;
+}
+.camera .text-center,
+.camera .section,
+.camera .sectionsaved {
+  text-align: center;
+}
+.camera .section {
+  cursor: pointer;
+}
+.camera .sectionsaved {
+  cursor: not-allowed;
 }
 .check1,
 .check2 {
