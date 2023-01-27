@@ -37,12 +37,21 @@ export default function Logup(){
         p: 'Ingresar contraseña',
         t: teamtext,
     });
+    //Indicador a la máquina de que el button [que hace laburar el] Ingresar / Crear perfil fue pulsado
+    let [touched, setTouched] = useState(false)
+    let [warningp, setWarningp] = useState('')
+    let [warningn, setWarningn] = useState('')
 
     // Redux: 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     let theuser= useSelector(state=> state.user)
     // console.log(theuser)
+
+    theuser === 'Usuario no encontrado' && !warningn && setWarningn(theuser)
+
+    theuser === 'Contraseña incorrecta' && !warningp  && setWarningp(theuser)
+
 
     useEffect(()=>{
         let role = foruser? 'usuario': foradmin? 'administrador' : ''
@@ -86,6 +95,9 @@ export default function Logup(){
     },[thereisuser, thereisadmin]);
 
     function change(v){
+        setWarningn("")
+        setWarningp("")
+        setTouched(false)
         let val= v.target.value;
         let nam= v.target.name
         theuser =''
@@ -103,6 +115,9 @@ export default function Logup(){
     }
 
     function submit(){ // user = {teamname, username, password,}
+        setWarningp("")
+        setWarningn("")
+        setTouched(true)
         let toDispatchPost, toDispatchLog
         if(foruser) {
             toDispatchPost = postUser
@@ -142,6 +157,7 @@ export default function Logup(){
 
     // let color1= foruser? '' : 'yellow';
     // let color2= foruser? 'yellow' : '';
+    
 
     return (
         <div>
@@ -183,7 +199,7 @@ export default function Logup(){
                             onChange={(e)=>change(e)}
                         />
                         <div className={errors.n ? "errors" : "noterr"} >
-                            {errors.n? errors.n : theuser === 'Usuario no encontrado' && theuser || <br/> } 
+                            {warningn !== "" ? warningn : <br/> } 
                         </div>
 
                         <div>Contraseña</div>
@@ -193,7 +209,7 @@ export default function Logup(){
                             value={input.password} onChange={(e)=>change(e)}
                         />
                         <div className={errors.p ? "errors" : "noterr"} >
-                            {errors.p? errors.p : theuser === 'Contraseña incorrecta' && theuser || <br/> } 
+                            {warningp !== "" ? warningp : <br/> } 
                         </div>
 
                         { tologup && foruser &&
@@ -213,6 +229,11 @@ export default function Logup(){
                     <u onClick={login} style={{color:"orangered", cursor:'pointer'}}>
                         {tologup?'Ingresar':tologin?'Registrarme':''}
                     </u>
+                    
+                    <div>
+                        {touched ? 'Cargando...' : ''}
+                    </div>
+
                 </div>
             </div>
         </div>
